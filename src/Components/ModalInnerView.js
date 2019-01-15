@@ -17,7 +17,7 @@ export default ({
         placeholder="title"
         className="input"
         value={title}
-        onChange={(e) => onTitleChange(e.target.value)}
+        onChange={e => onTitleChange(e.target.value)}
         maxLength="40"
       />
       <textarea
@@ -26,11 +26,15 @@ export default ({
         value={description}
         className="input"
         rows="5"
-        onChange={(e) => OnDescChange(e.target.value)}
+        onChange={e => OnDescChange(e.target.value)}
         maxLength="250"
       />
       <div className="modal-action-btn-container">
-        <button className="modal-action-button" onClick={() => add()} disabled={!title}>
+        <button
+          className="modal-action-button"
+          onClick={() => add()}
+          disabled={!title}
+        >
           Add
         </button>
         <button className="modal-action-button" onClick={() => reset()}>

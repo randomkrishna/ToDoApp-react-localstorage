@@ -6,7 +6,11 @@ export default ({ buttonArray, onClick, btnActive }) => {
     <div className="todo-filters">
       {isArray &&
         buttonArray.map(btn => (
-          <button onClick={() => onClick(btn)} className={`${btnActive === btn ? 'btn-active' : ''}`} key={btn}>
+          <button
+            onClick={() => onClick(btn)}
+            className={`${btnActive === btn ? "btn-active" : ""}`}
+            key={btn}
+          >
             <span>{btn}</span>
           </button>
         ))}

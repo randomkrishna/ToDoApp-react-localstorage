@@ -6,6 +6,7 @@ import FloatingAddButton from "./Components/FloatingAddButton";
 import TodoList from "./Components/TodoList";
 import TodoFilterButton from "./Components/TodoFilterBtn";
 import SearchBox from "./Components/SearchBox";
+import ModalToDoViewDetails from "./Components/ModalToDoDetailsView";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class App extends Component {
       allTodos: JSON.parse(localStorage.getItem("todos")) || [],
       showTodoType: "all",
       todoTypes: ["all", "pending", "completed"],
-      searchTerm: ""
+      searchTerm: "",
+      showDetailsModal: false,
+      showDetailsOf: ""
     };
   }
 
@@ -114,6 +117,15 @@ class App extends Component {
     });
   };
 
+  todoToView = id => {
+    const { allTodos } = this.state;
+    const detailsToShow = allTodos.filter(todo => todo.id === id);
+    this.setState({
+      showDetailsModal: !this.state.showDetailsModal,
+      showDetailsOf: detailsToShow
+    });
+  };
+
   render() {
     const {
       isModalOpen,
@@ -121,7 +133,9 @@ class App extends Component {
       description,
       showTodoType,
       todoTypes,
-      searchTerm
+      searchTerm,
+      showDetailsModal,
+      showDetailsOf
     } = this.state;
 
     const listOfTodos = this.filterWithSearchTerm(
@@ -144,8 +158,11 @@ class App extends Component {
             todos={listOfTodos}
             deleteTodo={this.deleteTodo}
             completedToDo={this.completedToDo}
+            viewToDo={this.todoToView}
           />
-          {!isModalOpen && <FloatingAddButton onClick={this.toggleModal} />}
+          {!isModalOpen && !showDetailsModal && (
+            <FloatingAddButton onClick={this.toggleModal} />
+          )}
           <ModalView isVisible={isModalOpen}>
             <ModalInnerView
               title={title}
@@ -155,6 +172,16 @@ class App extends Component {
               add={this.addTodo}
               reset={this.resetData}
               cancel={this.toggleModal}
+            />
+          </ModalView>
+          <ModalView isVisible={showDetailsModal}>
+            <ModalToDoViewDetails
+              detailsToView={showDetailsOf}
+              cancel={() =>
+                this.setState({
+                  showDetailsModal: !this.state.showDetailsModal
+                })
+              }
             />
           </ModalView>
         </div>

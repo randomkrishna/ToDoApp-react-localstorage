@@ -107,6 +107,10 @@
 .todo-filters .btn-active {
   background-color: rgba(0, 0, 0, 0.5);
 }
+.todo-text-container {
+  min-width: 245px;
+  cursor: pointer;
+}
 
 /* modal styling */
 

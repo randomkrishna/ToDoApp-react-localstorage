@@ -7,13 +7,12 @@ export default ({ todos, deleteTodo, completedToDo }) => {
       <ul>
         {!isEmptyArr &&
           todos.map((todo, index) => (
-            <li className="">
-              <button className="completed-todo" onClick={() => completedToDo(todo.id)}>&#10004;</button>
-              <div>
-                  <p className="font18">{todo.title}</p>
-                  <p className="font14">{todo.description}</p>
+            <li className="" key={index}>
+             {!todo.completed &&  <button className="completed-todo" onClick={() => completedToDo(todo.id)}>&#10004;</button> }
+              <div className={`'font18 ${todo.completed ? 'margin-left' : ''}`}>
+                  <p className={`'font18 ${todo.completed ? 'line-through' : ''}`}>{todo.title}</p>
+                  <p className={`font14 ${todo.completed ? 'line-through' : ''}`}>{todo.description}</p>
               </div>
-
               <button className="remove-todo" onClick={() => deleteTodo(todo.id)}>&#10006;</button>
             </li>
           ))}

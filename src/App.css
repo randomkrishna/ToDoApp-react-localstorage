@@ -1,29 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
-* {
-  box-sizing: border-box;
-}
 .font14 {
   font-size: 14px;
 }
 .font18 {
   font-size: 18px;
 }
-body {
-  font-family: "Raleway", sans-serif;
-  font-weight: 300;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background-color: #7a9083;
+.line-through {
+  text-decoration: line-through;
 }
+.margin-left {
+  margin-left: 10px;
+}
+/* todo related styling */
 .todo-wrapper {
-  background: -webkit-linear-gradient(315deg, #fedeb5 0%, #416074 100%);
   background: linear-gradient(135deg, #fedeb5 0%, #416074 100%);
   width: 360px;
   height: 600px;
@@ -38,9 +26,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
   flex-direction: row;
   height: 60px;
   width: 100%;
@@ -55,7 +40,6 @@ body {
   font-size: 12px;
   letter-spacing: 2px;
   padding: 10px;
-  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   cursor: pointer;
   outline: 0;
@@ -95,11 +79,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.3);
   border-bottom: 4px solid rgba(255, 255, 255, 0.2);
@@ -112,7 +92,6 @@ body {
   border: 0 none;
   outline: 0;
   background-color: rgba(0, 0, 0, 0.1);
-  -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 .todo-list-container li div p {
@@ -124,6 +103,9 @@ body {
 }
 .todo-list-container .remove-todo {
   margin-left: auto;
+}
+.todo-filters .btn-active {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* modal styling */
@@ -137,9 +119,8 @@ body {
   max-height: 100%;
   position: fixed;
   z-index: 100;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin-left: 10px;
+  top: 100px;
   background: white;
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
 }
@@ -176,7 +157,6 @@ body {
   margin: 8px 0;
   box-sizing: border-box;
   border: 3px solid #fedeb5;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
 }
@@ -205,4 +185,12 @@ body {
 .modal .modal-action-button:hover {
   background-color: #f1f1f1;
   color: black;
+}
+
+/* search box*/
+.search-box input {
+  width: 100%;
+  padding: 10px 5px;
+  color: black;
+  background-color: #c4c0b8;
 }
